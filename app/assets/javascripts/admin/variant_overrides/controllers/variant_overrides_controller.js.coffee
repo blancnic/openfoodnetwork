@@ -15,6 +15,7 @@ angular.module("admin.variantOverrides").controller "AdminVariantOverridesCtrl",
     price:      { name: "Price",      visible: true }
     on_hand:    { name: "On Hand",    visible: true }
     on_demand:  { name: "On Demand",  visible: false }
+    reset:      { name: "Reset",  visible: false }
 
   $scope.resetSelectFilters = ->
     $scope.producerFilter = 0
@@ -62,6 +63,7 @@ angular.module("admin.variantOverrides").controller "AdminVariantOverridesCtrl",
         VariantOverrides.updateIds updatedVos
         StatusMessage.display 'success', 'Changes saved.'
         $scope.variant_overrides_form.$setPristine()
+        VariantOverrides.updateData updatedVos # Refresh page data
       .error (data, status) ->
         StatusMessage.display 'failure', $scope.updateError(data, status)
 
@@ -76,6 +78,18 @@ angular.module("admin.variantOverrides").controller "AdminVariantOverridesCtrl",
         errors = errors.concat field_errors
       errors = errors.join ', '
       "I had some trouble saving: #{errors}"
-
     else
       "Oh no! I was unable to save your changes."
+
+  $scope.resetStock = ->
+    if DirtyVariantOverrides.count() > 0
+      StatusMessage.display 'alert', 'Save changes first.'
+      $timeout ->
+        $scope.displayDirty()
+      , 3000 # 3 second delay
+    else
+      StatusMessage.display 'progress', 'Changing on hand stock levels...'
+      VariantOverrides.resetStock()
+      .success (updatedVos) ->
+        VariantOverrides.updateData updatedVos
+        StatusMessage.display 'success', 'Stocks reset to defaults.'

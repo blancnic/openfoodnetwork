@@ -5,7 +5,8 @@
   = render 'admin/variant_overrides/filters'
   %hr.divider.sixteen.columns.alpha.omega
   .controls.sixteen.columns.alpha.omega
-    %div.thirteen.columns.alpha &nbsp;
+    %input.four.columns.alpha{type: 'button', value: 'Reset Stock to Defaults', 'ng-click' => 'resetStock()'}
+    %div.nine.columns.alpha &nbsp;
     = render 'admin/shared/columns_dropdown'
 
   %form{ name: 'variant_overrides_form' }
