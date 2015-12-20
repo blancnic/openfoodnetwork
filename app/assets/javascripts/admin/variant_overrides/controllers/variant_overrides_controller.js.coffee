@@ -1,4 +1,4 @@
-angular.module("admin.variantOverrides").controller "AdminVariantOverridesCtrl", ($scope, Indexer, Columns, SpreeApiAuth, PagedFetcher, StatusMessage, hubs, producers, hubPermissions, VariantOverrides, DirtyVariantOverrides) ->
+angular.module("admin.variantOverrides").controller "AdminVariantOverridesCtrl", ($scope, $timeout, Indexer, Columns, SpreeApiAuth, PagedFetcher, StatusMessage, hubs, producers, hubPermissions, VariantOverrides, DirtyVariantOverrides) ->
   $scope.hubs = Indexer.index hubs
   $scope.hub = null
   $scope.products = []
@@ -9,13 +9,13 @@ angular.module("admin.variantOverrides").controller "AdminVariantOverridesCtrl",
   $scope.StatusMessage = StatusMessage
 
   $scope.columns = Columns.setColumns
-    producer:   { name: "Producer",   visible: true }
-    product:    { name: "Product",    visible: true }
-    sku:        { name: "SKU",        visible: false }
-    price:      { name: "Price",      visible: true }
-    on_hand:    { name: "On Hand",    visible: true }
-    on_demand:  { name: "On Demand",  visible: false }
-    reset:      { name: "Reset",  visible: false }
+    producer:   { name: "Producer",           visible: true }
+    product:    { name: "Product",            visible: true }
+    sku:        { name: "SKU",                visible: false }
+    price:      { name: "Price",              visible: true }
+    on_hand:    { name: "On Hand",            visible: true }
+    on_demand:  { name: "On Demand",          visible: false }
+    reset:      { name: "Reset Stock Level",  visible: false }
 
   $scope.resetSelectFilters = ->
     $scope.producerFilter = 0
