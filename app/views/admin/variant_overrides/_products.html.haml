@@ -7,6 +7,7 @@
   %col.on_demand{ width: "10%", ng: { show: 'columns.on_demand.visible' } }
   %col.reset{ width: "1%", ng: { show: 'columns.reset.visible' } }
   %col.reset{ width: "15%", ng: { show: 'columns.reset.visible' } }
+  %col.inheritance{ width: "5%", ng: { show: 'columns.inheritance.visible' } }
   %thead{ ng: { controller: "ColumnsCtrl" } }
     %tr
       %th.producer{ ng: { show: 'columns.producer.visible' } } Producer
@@ -16,6 +17,7 @@
       %th.on_hand{ ng: { show: 'columns.on_hand.visible' } } On hand
       %th.on_demand{ ng: { show: 'columns.on_demand.visible' } } On Demand?
       %th.reset{ colspan: 2, ng: { show: 'columns.reset.visible' } } Enable Stock Level Reset?
+      %th.inheritance{ ng: { show: 'columns.inheritance.visible' } } Inherit?
   %tbody{bindonce: true, ng: {repeat: 'product in products | hubPermissions:hubPermissions:hub.id | attrFilter:{producer_id:producerFilter} | filter:query' } }
     = render 'admin/variant_overrides/products_product'
     = render 'admin/variant_overrides/products_variants'
