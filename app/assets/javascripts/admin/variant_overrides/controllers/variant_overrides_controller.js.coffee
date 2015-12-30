@@ -94,3 +94,5 @@ angular.module("admin.variantOverrides").controller "AdminVariantOverridesCtrl",
       .success (updatedVos) ->
         VariantOverrides.updateData updatedVos
         StatusMessage.display 'success', 'Stocks reset to defaults.'
+      .error (data, status) ->
+        $timeout -> StatusMessage.display 'failure', $scope.updateError(data, status)
