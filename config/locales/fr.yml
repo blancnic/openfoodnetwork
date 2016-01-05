@@ -24,7 +24,7 @@ fr:
   edit_order: "Editer la commande"
   ship_order: "Envoyer la commande"
   cancel_order: "Annuler la commande"
-  confirm_send_invoice: "Une facture de cette commande va être transmise au client. Etes-vous sûr de vouloir continuer ?"
+  confirm_send_invoice: "La facture de cette commande va être transmise au client. Etes-vous sûr de vouloir continuer ?"
   confirm_resend_order_confirmation: "Etes-vous certain de vouloir renvoyer le mail de confirmation de commande ?"
   must_have_valid_business_number: "%{enterprise_name} doit avoir un SIRET valide avant que les factures puissent être envoyées."
   invoice: "Facture"
